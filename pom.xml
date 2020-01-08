@@ -8,11 +8,11 @@
 		<version>2.1.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.yunding</groupId>
-	<artifactId>weimuke</artifactId>
+	<groupId>com.lichuachua</groupId>
+	<artifactId>blog</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>weimuke</name>
-	<description>微慕课</description>
+	<name>blog</name>
+	<description>李歘歘博客</description>
 
 	<properties>
 		<java.version>1.8</java.version>

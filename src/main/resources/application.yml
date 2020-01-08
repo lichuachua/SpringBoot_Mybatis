@@ -1,27 +1,17 @@
-#Ĭ��ʹ������
 spring:
   profiles:
     active: dev
-
-#����������profilesѡ���޹�
-mybatis:
-  typeAliasesPackage: com.yunding.weimuke.weimukeserver.entity
-  mapperLocations: classpath:mapper/*.xml
-
-
----
-
-#��������
-spring:
-  profiles: dev
-
   datasource:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/db_yunding_weimuke?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+      url: jdbc:mysql://localhost:3306/my_springboot_blog?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
       username: root
       password: 123456
-      # ʹ��Druid����Դ
       type: com.alibaba.druid.pool.DruidDataSource
   redis:
       host: localhost
       port: 6379
+
+
+mybatis:
+  typeAliasesPackage: com.lichuachua.blog.blogserver.entity
+  mapperLocations: classpath:mapper/*.xml

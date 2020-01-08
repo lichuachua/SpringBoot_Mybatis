@@ -2,26 +2,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.yunding.weimuke.weimukeserver.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.yunding.weimuke.weimukeserver.entity.User" >
-        <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="user_name" property="userName" jdbcType="VARCHAR" />
-        <result column="password" property="password" jdbcType="VARCHAR" />
-        <result column="age" property="age" jdbcType="INTEGER" />
-    </resultMap>
-    <sql id="Base_Column_List" >
-        id, user_name, password, age
-    </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-        select
-        <include refid="Base_Column_List" />
-        from user_t
-        where id = #{id}
+<mapper namespace="com.lichuachua.blog.blogserver.mapper.UserMapper">
+
+    <insert id="register" parameterType="com.lichuachua.blog.blogserver.entity.User">
+        INSERT INTO bg_user(user_id, mobile, password, nick_name, user_avatar, status, created_at, updated_at)
+         VALUES (#{userId},#{mobile},#{password},#{nickName},#{userAvatar},#{status},#{createdAt},#{updatedAt})
+    </insert>
+
+    <select id="findByMobile" resultType="com.lichuachua.blog.blogserver.entity.User" parameterType="java.lang.String">
+        SELECT * FROM bg_user WHERE mobile = #{mobile}
     </select>
 
-    <select id="queryUser" resultType="com.yunding.weimuke.weimukeserver.entity.User" parameterType="com.yunding.weimuke.weimukeserver.form.UserLoginForm">
-        SELECT * FROM user_t WHERE user_name = #{username} AND password = #{password}
+    <select id="login" parameterType="com.lichuachua.blog.blogserver.form.UserLoginForm" resultType="com.lichuachua.blog.blogserver.entity.User">
+        SELECT * FROM bg_user WHERE mobile = #{mobile} AND password = #{password}
     </select>
-
 
 </mapper>
