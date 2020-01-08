@@ -1,5 +1,6 @@
 package com.lichuachua.blog.blogserver.service.impl;
 
+import com.lichuachua.blog.blogserver.entity.User;
 import com.lichuachua.blog.blogserver.form.UserRegisterForm;
 import com.lichuachua.blog.common.enums.UserStatusEnum;
 import com.lichuachua.blog.common.util.NickNameUtil;
@@ -9,13 +10,14 @@ import com.lichuachua.blog.blogserver.enums.ErrorCodeEnum;
 import com.lichuachua.blog.blogserver.exception.UserException;
 import com.lichuachua.blog.blogserver.form.UserLoginForm;
 import com.lichuachua.blog.blogserver.mapper.UserMapper;
-import com.lichuachua.blog.blogserver.entity.User;
 import com.lichuachua.blog.blogserver.repository.IRedisRepository;
 import com.lichuachua.blog.blogserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -32,7 +34,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void register(UserRegisterForm userRegisterForm) {
         User user1 = userMapper.findByMobile(userRegisterForm.getMobile());
-        System.out.println(user1);
+//        System.out.println(user1);
         if (user1 != null) {
             throw new UserException(ErrorCodeEnum.MOBILE_REGISTERED);
         }
@@ -97,6 +99,12 @@ public class UserServiceImpl implements UserService {
           5.返回登录结果
          */
         return tokenInfo;
+    }
+
+    @Override
+    public User queryUserByMoBile(String mobile) {
+        User userList = userMapper.findByMobile(mobile);
+        return  userList;
     }
 
 

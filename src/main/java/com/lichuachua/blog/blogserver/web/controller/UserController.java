@@ -1,5 +1,6 @@
 package com.lichuachua.blog.blogserver.web.controller;
 
+import com.lichuachua.blog.blogserver.entity.User;
 import com.lichuachua.blog.blogserver.form.UserRegisterForm;
 import com.lichuachua.blog.core.support.web.controller.BaseController;
 import com.lichuachua.blog.blogserver.dto.TokenInfo;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Api(value = "UserController", tags = {"用户API"})
@@ -58,5 +60,13 @@ public class UserController extends BaseController<UserInfoDTO> {
         userService.register(userRegisterForm);
 
         return ResultWrapper.success();
+    }
+
+    @ApiOperation("显示所有用户")
+    @GetMapping("/queryUserByMoBile")
+    public ResultWrapper<User> queryUserByMoBile(@Valid String mobile){
+        User userList = userService.queryUserByMoBile(mobile);
+        return ResultWrapper.successWithData(userList);
+
     }
 }

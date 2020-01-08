@@ -1,12 +1,15 @@
 package com.lichuachua.blog.blogserver.entity;
 
 import lombok.Data;
-
-import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author 李歘歘
+ */
 @Data
-public class User implements Serializable {
+public class User {
+
+
     private String userId;
 
     private String mobile;
@@ -22,5 +25,6 @@ public class User implements Serializable {
     private Date createdAt;
 
     private Date updatedAt;
+
 
 }
